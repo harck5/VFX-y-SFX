@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 /*    void Update()
     {
         
-        if (Inputo.GetkeyDown(KeyCode.Space) && isOnTheGroup)
+        if (Inputo.GetkeyDown(KeyCode.Space) && isOnTheGroup && !gameOver)
         {
             isOnTheGround = false;
             _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
