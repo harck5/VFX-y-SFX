@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rigidbody;
     private bool isOnTheGround = true;
 
+    public ParticleSystem explosionParticle;
+    public ParticleSystem dirtSplatter;
+
+
     private Animator _animator;
     
     private void Start()
@@ -31,8 +35,10 @@ public class PlayerController : MonoBehaviour
             isOnTheGround = false; // Dejo de tocar el suelo
             _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             // Llamamos al trigger para que se dé la transición de la animación de correr a salto
-            _animator.SetTrigger("Jump_trig"); 
+            _animator.SetTrigger("Jump_trig");
+            dirtSplatter.Stop();
         }
+            
     }
     
     private void OnCollisionEnter(Collision otherCollider)
@@ -44,6 +50,7 @@ public class PlayerController : MonoBehaviour
         else if (otherCollider.gameObject.CompareTag("Ground"))
         {
             isOnTheGround = true;
+            dirtSplatter.Play();
         }
     }
 
@@ -52,5 +59,7 @@ public class PlayerController : MonoBehaviour
         gameOver = true;
         _animator.SetBool("Death_b", true);
         _animator.SetInteger("DeathType_int", Random.Range(1, 3));
+        explosionParticle.Play();
+        dirtSplatter.Stop();
     }
 }

@@ -9,6 +9,7 @@ public class SpawnManager : MonoBehaviour
 
     private float startDelay = 2f;
     private float repeatRate = 2f;
+    public string [] array;
 
     private PlayerController playerControllerScript;
 
@@ -29,7 +30,7 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnObstacle()
     {
-        Instantiate(obstaclePrefab, transform.position,
-            obstaclePrefab.transform.rotation);
+        //array = Random.Range(0, ObstaclePrefabs.Length);
+        //Instantiate(ObstaclePrefabs[array], ObstaclePrefabs[array].transform.rotation);
     }
 }
