@@ -2,14 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject obstaclePrefab;
 
     private float startDelay = 2f;
     private float repeatRate = 2f;
-    public string [] array;
+    public GameObject[] obstaclePrefabs;
 
     private PlayerController playerControllerScript;
 
@@ -30,7 +30,7 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnObstacle()
     {
-        //array = Random.Range(0, ObstaclePrefabs.Length);
-        //Instantiate(ObstaclePrefabs[array], ObstaclePrefabs[array].transform.rotation);
+        int randomIdx = Random.Range(0, obstaclePrefabs.Length);
+        Instantiate(obstaclePrefabs[randomIdx], transform.position, obstaclePrefabs[randomIdx].transform.rotation);
     }
 }
